@@ -41,10 +41,10 @@ def get_arams_participants(matchIds):
             response = requests.get(url.format(matchId=matchId), headers=headers)
             if response.status_code == 200:
                 break
-            if response.status_code == 429:
+            elif response.status_code == 429:
                 print("Triggered request limit of 100 every 2 minutes. Waiting for 2 minutes...")
                 time.sleep(120)
-            if response.status_code == 404:
+            elif response.status_code == 404:
                 print("Match file not found. Skipping.")
                 break
             else:
